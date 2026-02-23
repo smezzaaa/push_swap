@@ -6,7 +6,7 @@
 /*   By: smeza-ro <smeza-ro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 10:20:31 by smeza-ro          #+#    #+#             */
-/*   Updated: 2026/02/17 15:21:48 by smeza-ro         ###   ########.fr       */
+/*   Updated: 2026/02/23 10:22:24 by smeza-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,47 +72,50 @@ static void	printlst(t_list *ptr)
 {
 	while (ptr != NULL)
 	{
-		if (ptr->next != NULL)
-			printf ("|%d|->", ptr->content);
+		if ((ptr)->next != NULL)
+			printf ("|%d|->", (ptr)->content);
 		else
-			printf ("|%d|\n", ptr->content);
-		ptr = ptr->next;
+			printf ("|%d|\n", (ptr)->content);
+		ptr = (ptr)->next;
 	}
 }
 
-void create_stack(char *argv)
+void create_stack(char *argv, t_list **head)
 {
 	char	**arr;
 	int		str;
-	int		n;
-	t_list	*head;
 	
 	arr = ft_split(argv, ' ');
 	str = 0;
-	head = NULL;
 	while (arr[str])
 	{
 		if (ft_check_split(arr[str]) != 0)
 			return(ft_error(arr));
-		n = ft_atoi(arr[str]);
-		if (head == NULL)
-			head = ft_lstnew(n);
+		if (*head == NULL)
+			*head = ft_lstnew(ft_atoi(arr[str]));
 		else
-			ft_lstadd_back(&head, ft_lstnew(n));
+			ft_lstadd_back(head, ft_lstnew(ft_atoi(arr[str])));
 		str++;
 	}
-	if (ft_check_stack(&head) != 0)
+	if (ft_check_stack(head) != 0)
 	{
-		ft_lstclear(&head);
+		ft_lstclear(head);
 		ft_error(arr);
 	}
 	free_mat(arr);
-	printlst(head);
 }
 
 int main()
 {
-	create_stack("2 4 3 37 6");
+	t_list	*stack_a;
+	t_list	*stack_b;
+	stack_a = NULL;
+	stack_b = NULL;
+	create_stack("2 4 3 37 6", &stack_a);
+	create_stack("1 2 3", &stack_b);
+	printlst(stack_a);
+	rra (&stack_a);
+	printlst(stack_a);
 }
 /* 
 int main()

@@ -6,7 +6,7 @@
 /*   By: smeza-ro <smeza-ro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 15:27:43 by smeza-ro          #+#    #+#             */
-/*   Updated: 2026/02/17 15:19:46 by smeza-ro         ###   ########.fr       */
+/*   Updated: 2026/02/23 09:37:23 by smeza-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,14 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		}
 	}
 }
+
+void	ft_lstdelone(t_list **lst)
+{
+	if (!lst)
+		return ;
+	free (*lst);
+}
+
 void	ft_lstclear(t_list **lst)
 {
 	t_list	*temp;
@@ -62,6 +70,19 @@ void	ft_lstclear(t_list **lst)
 		free(*lst);
 		*lst = temp;
 	}
+}
+
+int	ft_lstsize(t_list *lst)
+{
+	int	size;
+
+	size = 0;
+	while (lst != NULL)
+	{
+		size++;
+		lst = lst->next;
+	}
+	return (size);
 }
 
 /* 
