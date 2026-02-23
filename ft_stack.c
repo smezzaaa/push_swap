@@ -6,7 +6,7 @@
 /*   By: smeza-ro <smeza-ro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 10:20:31 by smeza-ro          #+#    #+#             */
-/*   Updated: 2026/02/23 10:22:24 by smeza-ro         ###   ########.fr       */
+/*   Updated: 2026/02/23 19:59:59 by smeza-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,10 +111,8 @@ int main()
 	t_list	*stack_b;
 	stack_a = NULL;
 	stack_b = NULL;
-	create_stack("2 4 3 37 6", &stack_a);
-	create_stack("1 2 3", &stack_b);
-	printlst(stack_a);
-	rra (&stack_a);
+	create_stack("2 4 3 37 1  -1111 7356357 30939093 -22 1234567 876543 0", &stack_a);
+	ft_index(&stack_a);
 	printlst(stack_a);
 }
 /* 

@@ -6,7 +6,7 @@
 /*   By: smeza-ro <smeza-ro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 09:56:05 by smeza-ro          #+#    #+#             */
-/*   Updated: 2026/02/23 11:01:58 by smeza-ro         ###   ########.fr       */
+/*   Updated: 2026/02/23 19:12:18 by smeza-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ void	ft_rev_rotate(t_list **head);
 int		rra(t_list **head_a);
 int		rrb(t_list **head_b);
 int		rrr(t_list **head_a, t_list **head_b);
+void	ft_index(t_list **head);
 
 #endif
