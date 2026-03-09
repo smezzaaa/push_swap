@@ -6,7 +6,7 @@
 /*   By: smeza-ro <smeza-ro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 15:27:43 by smeza-ro          #+#    #+#             */
-/*   Updated: 2026/02/23 09:37:23 by smeza-ro         ###   ########.fr       */
+/*   Updated: 2026/03/08 18:24:29 by smeza-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_list	*ft_lstnew(int content)
 		return (NULL);
 	lst->content = content;
 	lst->next = 0;
+	lst->target_node = NULL;
 	return (lst);
 }
 

@@ -6,7 +6,7 @@
 /*   By: smeza-ro <smeza-ro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 10:20:31 by smeza-ro          #+#    #+#             */
-/*   Updated: 2026/02/25 12:13:42 by smeza-ro         ###   ########.fr       */
+/*   Updated: 2026/03/09 20:20:18 by smeza-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,17 +103,4 @@ void create_stack(char *argv, t_list **head)
 		ft_error(arr);
 	}
 	free_mat(arr);
-}
-
-int main()
-{
-	t_list	*stack_a;
-	t_list	*stack_b;
-	stack_a = NULL;
-	stack_b = NULL;
-	create_stack("178 5 4440 3323 163", &stack_a);
-	printlst(stack_a);
-	ft_sort_five(&stack_a, &stack_b);
-	//printlst(stack_b);
-	printlst(stack_a);
 }

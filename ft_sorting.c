@@ -5,77 +5,60 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: smeza-ro <smeza-ro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/23 18:30:27 by smeza-ro          #+#    #+#             */
-/*   Updated: 2026/02/25 10:05:15 by smeza-ro         ###   ########.fr       */
+/*   Created: 2026/03/05 09:52:49 by smeza-ro          #+#    #+#             */
+/*   Updated: 2026/03/08 18:52:24 by smeza-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ft_lstindex(int *arr, int size, t_list **head)
+void	ft_chunk(t_list **head_a, t_list **head_b)
 {
+	int	len;
+	int	n_chunk;
+	int s_chunk;
 	int	i;
-	t_list	*tmp;
 
-	tmp = *head;
-	while (*head)
+	len = ft_lstsize(head_a);
+	n_chunk = len / 50;
+	s_chunk = len / n_chunk;
+	i = 1;
+	while (len >= 3)
 	{
-		i = 0;
-		while (i < size)
+		if ((*head_a)->content < (s_chunk * i))
 		{
-			if (arr[i] == (*head)->content)
-			{
-				(*head)->content = i;
-				i = size;	
-			}
-			i++;
-		}
-		*head = (*head)->next;
-	}
-	*head = tmp;
-}
-
-static void	ft_sortarr(int **arr, int size)
-{
-	int	i;
-	int tmp;
-
-	i = 0;
-	while (i < (size - 1))
-	{
-		if ((*arr)[i] > (*arr)[i + 1])
-		{
-			tmp = (*arr)[i];
-			(*arr)[i] = (*arr)[i + 1];
-			(*arr)[i + 1] = tmp;
-
-			i = 0;
+			pb(head_a, head_b);
+			len = ft_lstsize(head_a);
+			if (len <= (s_chunk * (n_chunk - i)))
+				i++;
 		}
 		else
-			i++;
+			ra(head_a);
 	}
+	ft_sort_three(head_a);
 }
 
-void	ft_index(t_list **head)
+void	ft_target_node(t_list **head_a, t_list **head_b)
 {
-	int	*arr;
-	int	size;
-	int	i;
-	t_list	*tmp;
+	t_list	*target;
+	long	match;
 
-	i = 0;
-	tmp = *head;
-	size = ft_lstsize(*head);
-	arr = (int *)malloc(size * sizeof(int));
-	if (!arr)
-		return ;
-	while (i < size)
+	while (*head_b)
 	{
-		arr[i] = (*head)->content; 
-		i++;
-		*head = (*head)->next;
+		match = LONG_MAX;
+		while (*head_a)
+		{
+			if ((*head_b)->content < (*head_a)->content
+				&& (*head_a)->content < match)
+			{
+				match = (*head_a)->content;
+				target = *head_a;
+			}
+			*head_a = (*head_a)->next;
+		}
+		if (match == LONG_MAX)
+			target = ft_smallest(head_a);
+		else
+			(*head_b)->target_node = target;
 	}
-	ft_sortarr(&arr, size);
-	*head = tmp;
-	ft_lstindex(arr, size, head);
 }

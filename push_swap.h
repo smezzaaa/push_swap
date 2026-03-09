@@ -6,7 +6,7 @@
 /*   By: smeza-ro <smeza-ro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 09:56:05 by smeza-ro          #+#    #+#             */
-/*   Updated: 2026/02/25 11:43:42 by smeza-ro         ###   ########.fr       */
+/*   Updated: 2026/03/09 20:24:23 by smeza-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_list
 {
 	int			content;
 	struct s_list	*next;
+	struct s_list	*target_node;
 }				t_list;
 
 int		ft_atoi(const char *nptr);
@@ -56,8 +57,21 @@ int		rra(t_list **head_a);
 int		rrb(t_list **head_b);
 int		rrr(t_list **head_a, t_list **head_b);
 void	ft_index(t_list **head);
-void	ft_sort_three(t_list **head_a, t_list **head_b);
+void	ft_sort_three(t_list **head_a);
+void	ft_sort_four(t_list **head_a, t_list ** head_b);
 void	ft_sort_five(t_list **head_a, t_list ** head_b);
-
+void	ft_chunk(t_list **head_a, t_list **head_b);
+void	ft_target_node(t_list **head_a, t_list **head_b);
+int	ft_find_pos(t_list **head, t_list *curr);
+t_list	*ft_cheapest(t_list **head_a, t_list **head_b);
+int ft_calculate(t_list **head_a, t_list **head_b, t_list *target);
+int	ft_check_order(t_list **head_a);
+t_list *ft_smallest(t_list **head);
+int	ft_cost(t_list **head, t_list *curr);
+void	ft_execute_rev_rotate(t_list **head_a, t_list **head_b, t_list *cheapest);
+void	ft_execute_rotate(t_list **head_a, t_list **head_b, t_list *cheapest);
+void	ft_move(t_list **head_a, t_list **head_b, t_list *cheapest);
+void	ft_tidy(t_list **head_a, t_list *smallest);
+void	ft_push_swap(t_list **head_a, t_list **head_b);
 
 #endif
