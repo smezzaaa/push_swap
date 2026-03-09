@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sorting.c                                       :+:      :+:    :+:   */
+/*   ft_index.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smeza-ro <smeza-ro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 18:30:27 by smeza-ro          #+#    #+#             */
-/*   Updated: 2026/02/25 10:05:15 by smeza-ro         ###   ########.fr       */
+/*   Updated: 2026/03/09 20:47:49 by smeza-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	ft_index(t_list **head)
 
 	i = 0;
 	tmp = *head;
-	size = ft_lstsize(*head);
+	size = ft_lstsize(head);
 	arr = (int *)malloc(size * sizeof(int));
 	if (!arr)
 		return ;

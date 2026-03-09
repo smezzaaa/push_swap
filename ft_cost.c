@@ -6,7 +6,7 @@
 /*   By: smeza-ro <smeza-ro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 12:42:05 by smeza-ro          #+#    #+#             */
-/*   Updated: 2026/03/09 20:21:14 by smeza-ro         ###   ########.fr       */
+/*   Updated: 2026/03/09 20:44:58 by smeza-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,8 @@ int ft_calculate(t_list **head_a, t_list **head_b, t_list *target)
 	int pos_b;
 	int cost;
 
-	pos_t = ft_find_pos(*head_a, target);
-	pos_b = ft_find_pos(*head_b,head_b);
+	pos_t = ft_find_pos(head_a, target);
+	pos_b = ft_find_pos(head_b, *head_b);
 	if ((pos_t <= (ft_lstsize(head_a) / 2)
 		&& pos_b < (ft_lstsize(head_b) / 2))
 		|| (pos_t >= (ft_lstsize(head_a) / 2) && pos_b > (ft_lstsize(head_b) / 2)))
