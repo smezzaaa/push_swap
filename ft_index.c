@@ -6,7 +6,7 @@
 /*   By: smeza-ro <smeza-ro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 18:30:27 by smeza-ro          #+#    #+#             */
-/*   Updated: 2026/03/09 20:47:49 by smeza-ro         ###   ########.fr       */
+/*   Updated: 2026/03/12 15:24:57 by smeza-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,8 @@ void	ft_index(t_list **head)
 	ft_sortarr(&arr, size);
 	*head = tmp;
 	ft_lstindex(arr, size, head);
+
+	free(arr);
 }
+
+

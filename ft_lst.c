@@ -6,7 +6,7 @@
 /*   By: smeza-ro <smeza-ro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 15:27:43 by smeza-ro          #+#    #+#             */
-/*   Updated: 2026/03/09 20:43:58 by smeza-ro         ###   ########.fr       */
+/*   Updated: 2026/03/10 16:02:23 by smeza-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,16 @@ void	ft_lstclear(t_list **lst)
 int	ft_lstsize(t_list **lst)
 {
 	int	size;
+	t_list	*tmp;
 
+	tmp = *lst;
 	size = 0;
 	while (*lst != NULL)
 	{
 		*lst = (*lst)->next;
 		size++;
 	}
+	*lst = tmp;
 	return (size);
 }
 

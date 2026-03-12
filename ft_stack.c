@@ -6,7 +6,7 @@
 /*   By: smeza-ro <smeza-ro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 10:20:31 by smeza-ro          #+#    #+#             */
-/*   Updated: 2026/03/09 20:41:13 by smeza-ro         ###   ########.fr       */
+/*   Updated: 2026/03/10 15:55:45 by smeza-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,26 +61,15 @@ static void	free_mat(char **arr)
 	free(arr);
 }
 
-void	ft_error(char **arr)
+void	ft_error(t_list **head)
 {
-	free_mat(arr);
-	write(1, "Error\n", 6);
+	ft_lstclear(head);
+	write(2, "Error\n", 6);
 	exit(1);
 }
-/* 
-static void	printlst(t_list *ptr)
-{
-	while (ptr != NULL)
-	{
-		if ((ptr)->next != NULL)
-			printf ("|%d|->", (ptr)->content);
-		else
-			printf ("|%d|\n", (ptr)->content);
-		ptr = (ptr)->next;
-	}
-} */
 
-void create_stack(char *argv, t_list **head)
+
+void create_stack_split(char *argv, t_list **head)
 {
 	char	**arr;
 	int		str;
@@ -90,7 +79,10 @@ void create_stack(char *argv, t_list **head)
 	while (arr[str])
 	{
 		if (ft_check_split(arr[str]) != 0)
-			return(ft_error(arr));
+		{
+			free_mat(arr);
+			return(ft_error(head));
+		}	
 		if (*head == NULL)
 			*head = ft_lstnew(ft_atoi(arr[str]));
 		else
@@ -99,8 +91,28 @@ void create_stack(char *argv, t_list **head)
 	}
 	if (ft_check_stack(head) != 0)
 	{
-		ft_lstclear(head);
-		ft_error(arr);
+		free_mat(arr);
+		ft_error(head);
 	}
 	free_mat(arr);
+}
+
+void create_stack(char **av, int ac, t_list **head)
+{
+	int	i;
+	
+	i = 1;
+	while (i < ac)
+	{
+		if (*head == NULL)
+			*head = ft_lstnew(ft_atoi(av[i]));
+		else
+			ft_lstadd_back(head, ft_lstnew(ft_atoi(av[i])));
+		i++;
+	}
+	if (ft_check_stack(head) != 0)
+	{
+		ft_lstclear(head);
+		ft_error(head);
+	}
 }

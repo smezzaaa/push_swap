@@ -6,7 +6,7 @@
 /*   By: smeza-ro <smeza-ro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 09:33:32 by smeza-ro          #+#    #+#             */
-/*   Updated: 2026/03/05 11:37:51 by smeza-ro         ###   ########.fr       */
+/*   Updated: 2026/03/10 14:48:11 by smeza-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,13 @@ static t_list *ft_highest(t_list **head)
 	return (tmp);
 }
 
+void	ft_sort_two(t_list	**head_a)
+{
+	if (*head_a == ft_highest(head_a))
+		sa(head_a);
+	else
+		return ;
+}
 
 void	ft_sort_three(t_list **head_a)
 {

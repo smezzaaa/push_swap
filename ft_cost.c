@@ -6,7 +6,7 @@
 /*   By: smeza-ro <smeza-ro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 12:42:05 by smeza-ro          #+#    #+#             */
-/*   Updated: 2026/03/09 20:44:58 by smeza-ro         ###   ########.fr       */
+/*   Updated: 2026/03/12 15:16:50 by smeza-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	ft_cost(t_list **head, t_list *curr)
 	pos = ft_find_pos(head, curr);
 	cost = 0;
 	if (pos > (len / 2))
-	cost = len - pos;
+		cost = (len - pos);
 	else if (pos <= (len / 2))
-	cost = pos;
+		cost = pos;
 	return (cost);
 }
 
@@ -35,16 +35,12 @@ t_list *ft_smallest(t_list **head)
 	t_list	*lst;
 	t_list	*tmp;
 	
-	lst = (*head)->next;
+	lst = *head;
 	tmp = *head;
 	while (lst)
 	{
-		if ((tmp->content) > (lst->content))
-		{
+		if ((lst->content) < (tmp->content))
 			tmp = lst;
-			lst = tmp->next;
-		}
-		else
 		lst = lst->next;
 	}
 	return (tmp);

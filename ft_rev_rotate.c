@@ -6,7 +6,7 @@
 /*   By: smeza-ro <smeza-ro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 10:13:57 by smeza-ro          #+#    #+#             */
-/*   Updated: 2026/02/23 10:57:35 by smeza-ro         ###   ########.fr       */
+/*   Updated: 2026/03/12 15:55:11 by smeza-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,16 @@
 
 void	ft_rev_rotate(t_list **head)
 {
-	t_list	*last;
-	t_list	*top;
-	t_list	*sec_last;
+    t_list  *last;
+    t_list  *sec_last;
 
-	last = ft_lstlast(*head);
-	top = ft_lstnew(last->content);
-	sec_last = *head;
-	while(sec_last->next != last)
-		sec_last = sec_last->next;
-	top->next = *head;
-	*head = top;
-	sec_last->next = NULL;
-	ft_lstdelone(&last);
+    sec_last = *head;
+    while (sec_last->next && sec_last->next->next)
+        sec_last = sec_last->next;
+    last = sec_last->next;
+    sec_last->next = NULL;
+    last->next = *head;
+    *head = last;
 }
 
 int	rra(t_list **head_a)
