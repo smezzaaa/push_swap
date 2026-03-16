@@ -6,7 +6,7 @@
 /*   By: smeza-ro <smeza-ro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 09:32:47 by smeza-ro          #+#    #+#             */
-/*   Updated: 2026/02/23 10:58:31 by smeza-ro         ###   ########.fr       */
+/*   Updated: 2026/03/16 10:20:04 by smeza-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_rotate(t_list **head)
 	t_list	*top;
 	t_list	*last;
 	t_list	*tmp;
-	
+
 	top = *head;
 	last = ft_lstnew(top->content);
 	ft_lstadd_back(head, last);

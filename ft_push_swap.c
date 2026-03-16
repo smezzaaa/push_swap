@@ -6,7 +6,7 @@
 /*   By: smeza-ro <smeza-ro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/08 17:21:43 by smeza-ro          #+#    #+#             */
-/*   Updated: 2026/03/12 15:26:26 by smeza-ro         ###   ########.fr       */
+/*   Updated: 2026/03/16 09:41:10 by smeza-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,16 @@ void	ft_push_swap(t_list **head_a, t_list **head_b)
 	t_list	*cheapest;
 	t_list	*target;
 
-	if (ft_check_order(head_a) != 0)
+	if (ft_check_order(head_a) == 1)
 		return ;
 	ft_chunk(head_a, head_b);
 	while (*head_b)
 	{
-		// printlst(*head_a);
-		// printlst(*head_b);
 		ft_target_node(head_a, head_b);
 		cheapest = ft_cheapest (head_a, head_b);
 		target = cheapest->target_node;
-	 	//printf("|c: %d|->|t: %d|\n", cheapest->content, target->content);
 		ft_move(head_a, head_b, cheapest);
 		pa(head_a, head_b);
-		//*head_b = (*head_b)->next;
 	}
 	ft_tidy(head_a, ft_smallest(head_a));
 	ft_lstclear(head_b);
@@ -57,18 +53,17 @@ void	ft_tidy(t_list **head_a, t_list *smallest)
 int	ft_check_order(t_list **head_a)
 {
 	t_list	*tmp;
+	t_list	*next;
 
 	tmp = *head_a;
-	while (*head_a)
+	next = tmp->next;
+	while (tmp && tmp->next)
 	{
-		if ((*head_a)->content < (*head_a)->next->content)
-		{
-			*head_a = tmp;
+		if (tmp->content > next->content)
 			return (0);
-		}
-		*head_a = (*head_a)->next;
+		next = next->next;
+		tmp = tmp->next;
 	}
-	*head_a = tmp;
 	return (1);
 }
 /* 

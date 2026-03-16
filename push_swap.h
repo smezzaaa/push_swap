@@ -6,7 +6,7 @@
 /*   By: smeza-ro <smeza-ro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 09:56:05 by smeza-ro          #+#    #+#             */
-/*   Updated: 2026/03/12 12:26:02 by smeza-ro         ###   ########.fr       */
+/*   Updated: 2026/03/16 10:46:30 by smeza-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,59 +24,61 @@
 
 typedef struct s_list
 {
-	int			content;
+	int				content;
 	struct s_list	*next;
 	struct s_list	*target_node;
 }				t_list;
 
-int		ft_atoi(const char *nptr);
-char	**ft_split(char const *s, char c);
-t_list	*ft_lstnew(int content);
-void	ft_lstadd_back(t_list **lst, t_list *neww);
-void	ft_lstclear(t_list **lst);
-void	ft_lstdelone(t_list **lst);
-t_list	*ft_lstlast(t_list *lst);
-int		ft_lstsize(t_list **lst);
-void	create_stack_split(char *argv, t_list **head);
-void	create_stack(char **av, int ac, t_list **head);
-void	ft_error(t_list **head);
-int		ft_check_split(char	*str);
-int		ft_check_stack(t_list **head);
-void	ft_swap(t_list **head);
-int		sa(t_list	**head_a);
-int		sb(t_list	**head_b);
-int		ss(t_list **head_a, t_list **head_b);
-void	ft_push(t_list **dest, t_list **src);
-int		pa(t_list **head_a, t_list **head_b);
-int		pb(t_list **head_b, t_list **head_a);
-void	ft_rotate(t_list **head);
-int		ra(t_list **head_a);
-int		rb(t_list **head_b);
-int		rr(t_list **head_a, t_list **head_b);
-void	ft_rev_rotate(t_list **head);
-int		rra(t_list **head_a);
-int		rrb(t_list **head_b);
-int		rrr(t_list **head_a, t_list **head_b);
-void	ft_index(t_list **head);
-void	ft_sort_two(t_list	**head_a);
-void	ft_sort_three(t_list **head_a);
-void	ft_sort_four(t_list **head_a, t_list ** head_b);
-void	ft_sort_five(t_list **head_a, t_list ** head_b);
-void	ft_chunk(t_list **head_a, t_list **head_b);
-void	ft_target_node(t_list **head_a, t_list **head_b);
-int		ft_find_pos(t_list **head, t_list *curr);
-t_list	*ft_cheapest(t_list **head_a, t_list **head_b);
-int 	ft_calculate(t_list **head_a, t_list **head_b, t_list *target);
-int		ft_check_order(t_list **head_a);
-t_list 	*ft_smallest(t_list **head);
-int		ft_cost(t_list **head, t_list *curr);
-void	ft_execute_rev_rotate(t_list **head_a, t_list **head_b, t_list *cheapest);
-void	ft_execute_rotate(t_list **head_a, t_list **head_b, t_list *cheapest);
-void	ft_move(t_list **head_a, t_list **head_b, t_list *cheapest);
-void	ft_tidy(t_list **head_a, t_list *smallest);
-void	ft_push_swap(t_list **head_a, t_list **head_b);
-void	ft_execute_cross_ba(t_list **head_a, t_list **head_b, t_list *curr);
-void	ft_execute_cross_ab(t_list **head_a, t_list **head_b, t_list *curr);
-void	printlst(t_list *ptr);
+long int	ft_atoi(const char *nptr);
+char		**ft_split(char const *s, char c);
+t_list		*ft_lstnew(int content);
+void		ft_lstadd_back(t_list **lst, t_list *new);
+void		ft_lstclear(t_list **lst);
+void		ft_lstdelone(t_list **lst);
+t_list		*ft_lstlast(t_list *lst);
+int			ft_lstsize(t_list **lst);
+void		create_stack_split(char *argv, t_list **head);
+void		create_stack(char **av, int ac, t_list **head);
+void		ft_error(t_list **head);
+void		free_arr(char **arr);
+int			ft_check_atoi(char *av);
+int			ft_check_split(char	*str);
+int			ft_check_stack(t_list **head);
+void		ft_swap(t_list **head);
+int			sa(t_list	**head_a);
+int			sb(t_list	**head_b);
+int			ss(t_list **head_a, t_list **head_b);
+void		ft_push(t_list **dest, t_list **src);
+int			pa(t_list **head_a, t_list **head_b);
+int			pb(t_list **head_b, t_list **head_a);
+void		ft_rotate(t_list **head);
+int			ra(t_list **head_a);
+int			rb(t_list **head_b);
+int			rr(t_list **head_a, t_list **head_b);
+void		ft_rev_rotate(t_list **head);
+int			rra(t_list **head_a);
+int			rrb(t_list **head_b);
+int			rrr(t_list **head_a, t_list **head_b);
+void		ft_index(t_list **head);
+void		ft_sort_two(t_list	**head_a);
+void		ft_sort_three(t_list **head_a);
+void		ft_sort_four(t_list **head_a, t_list **head_b);
+void		ft_sort_five(t_list **head_a, t_list **head_b);
+void		ft_chunk(t_list **head_a, t_list **head_b);
+void		ft_target_node(t_list **head_a, t_list **head_b);
+int			ft_find_pos(t_list **head, t_list *curr);
+t_list		*ft_cheapest(t_list **head_a, t_list **head_b);
+int			ft_calc(t_list **a, t_list **b, t_list *curr, t_list *trg);
+int			ft_check_order(t_list **head_a);
+t_list		*ft_smallest(t_list **head);
+int			ft_cost(t_list **head, t_list *curr);
+void		ft_execute_rrr(t_list **head_a, t_list **head_b, t_list *cheapest);
+void		ft_execute_rr(t_list **head_a, t_list **head_b, t_list *cheapest);
+void		ft_move(t_list **head_a, t_list **head_b, t_list *cheapest);
+void		ft_tidy(t_list **head_a, t_list *smallest);
+void		ft_push_swap(t_list **head_a, t_list **head_b);
+void		ft_execute_cross_ba(t_list **head_a, t_list **head_b, t_list *curr);
+void		ft_execute_cross_ab(t_list **head_a, t_list **head_b, t_list *curr);
+void		printlst(t_list *ptr);
 
 #endif

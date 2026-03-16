@@ -6,25 +6,16 @@
 /*   By: smeza-ro <smeza-ro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 21:17:25 by smeza-ro          #+#    #+#             */
-/*   Updated: 2026/03/10 19:49:09 by smeza-ro         ###   ########.fr       */
+/*   Updated: 2026/03/16 10:38:16 by smeza-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ft_ac_av_check(int ac, char **av, t_list **head)
+static void	free_stacks(t_list **a, t_list **b)
 {
-	int	i;
-
-	i = 1;
-	if (ac < 2)
-		exit(1);
-	while (i < ac)
-	{
-		if (ft_check_split(av[i]) == 1)
-			return (ft_error(head));
-		i++;
-	}
+	ft_lstclear(b);
+	ft_lstclear(a);
 }
 
 int	main(int argc, char **argv)
@@ -34,10 +25,10 @@ int	main(int argc, char **argv)
 
 	stack_a = NULL;
 	stack_b = NULL;
-
-	ft_ac_av_check(argc, argv, &stack_a);
+	if (argc == 1)
+		exit(1);
 	if (argc == 2)
-		create_stack_split(argv[2], &stack_a);
+		create_stack_split(argv[1], &stack_a);
 	else if (argc > 2)
 		create_stack(argv, argc, &stack_a);
 	if (!stack_a)
@@ -53,6 +44,5 @@ int	main(int argc, char **argv)
 		ft_sort_five(&stack_a, &stack_b);
 	else if (ft_lstsize(&stack_a) > 5)
 		ft_push_swap(&stack_a, &stack_b);
-	ft_lstclear(&stack_b);
-	ft_lstclear(&stack_a);
+	free_stacks(&stack_a, &stack_b);
 }

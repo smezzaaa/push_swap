@@ -6,19 +6,18 @@
 /*   By: smeza-ro <smeza-ro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 12:42:05 by smeza-ro          #+#    #+#             */
-/*   Updated: 2026/03/12 15:16:50 by smeza-ro         ###   ########.fr       */
+/*   Updated: 2026/03/16 10:34:40 by smeza-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
 int	ft_cost(t_list **head, t_list *curr)
 {
 	int	len;
-	int pos;
-	int cost;
-	
+	int	pos;
+	int	cost;
+
 	len = ft_lstsize(head);
 	pos = ft_find_pos(head, curr);
 	cost = 0;
@@ -29,12 +28,11 @@ int	ft_cost(t_list **head, t_list *curr)
 	return (cost);
 }
 
-
-t_list *ft_smallest(t_list **head)
+t_list	*ft_smallest(t_list **head)
 {
 	t_list	*lst;
 	t_list	*tmp;
-	
+
 	lst = *head;
 	tmp = *head;
 	while (lst)
@@ -67,44 +65,45 @@ t_list	*ft_cheapest(t_list **head_a, t_list **head_b)
 	t_list	*tmp;
 	int		cost;
 	int		pos;
-	
+
 	tmp = *head_b;
 	cost = -1;
 	pos = 0;
 	while (*head_b)
 	{
-		if (cost > ft_calculate(head_a, head_b, (*head_b)->target_node) || cost == -1)
+		if (cost > ft_calc(head_a, &tmp, *head_b, (*head_b)->target_node)
+			|| cost == -1)
 		{
-			cost = ft_calculate(head_a, head_b, (*head_b)->target_node);
+			cost = ft_calc(head_a, &tmp, *head_b, (*head_b)->target_node);
 			cheapest = *head_b;
-			pos = ft_find_pos(&tmp, cheapest);
 		}
-		*head_b = (*head_b)->next;	
+		*head_b = (*head_b)->next;
 	}
 	*head_b = tmp;
 	return (cheapest);
 }
 
-int ft_calculate(t_list **head_a, t_list **head_b, t_list *target)
+int	ft_calc(t_list **a, t_list **b, t_list *curr, t_list *trg)
 {
 	int	pos_t;
-	int pos_b;
-	int cost;
+	int	pos_b;
+	int	mid_t;
+	int	mid_b;
+	int	cost;
 
-	pos_t = ft_find_pos(head_a, target);
-	pos_b = ft_find_pos(head_b, *head_b);
-	if ((pos_t <= (ft_lstsize(head_a) / 2)
-		&& pos_b < (ft_lstsize(head_b) / 2))
-		|| (pos_t >= (ft_lstsize(head_a) / 2) && pos_b > (ft_lstsize(head_b) / 2)))
+	pos_t = ft_find_pos(a, trg);
+	pos_b = ft_find_pos(b, curr);
+	mid_t = ft_lstsize(a) / 2;
+	mid_b = ft_lstsize(b) / 2;
+	if ((pos_t <= mid_t && pos_b <= mid_b)
+		|| (pos_t > mid_t && pos_b > mid_b))
 	{
-		if (ft_cost(head_b, *head_b) > ft_cost(head_a, target))
-			cost = ft_cost(head_b, *head_b);
+		if (ft_cost(b, curr) > ft_cost(a, trg))
+			cost = ft_cost(b, curr);
 		else
-			cost = ft_cost(head_a, target);
+			cost = ft_cost(a, trg);
 	}
-	else if (pos_t == pos_b)
-		cost = ft_cost(head_a, target);
 	else
-		cost = ft_cost(head_b, *head_b) + ft_cost(head_a, target);
+		cost = ft_cost(b, curr) + ft_cost(a, trg);
 	return (cost);
 }

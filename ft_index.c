@@ -6,7 +6,7 @@
 /*   By: smeza-ro <smeza-ro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 18:30:27 by smeza-ro          #+#    #+#             */
-/*   Updated: 2026/03/12 15:24:57 by smeza-ro         ###   ########.fr       */
+/*   Updated: 2026/03/16 10:28:14 by smeza-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	ft_lstindex(int *arr, int size, t_list **head)
 {
-	int	i;
+	int		i;
 	t_list	*tmp;
 
 	tmp = *head;
@@ -26,7 +26,7 @@ static void	ft_lstindex(int *arr, int size, t_list **head)
 			if (arr[i] == (*head)->content)
 			{
 				(*head)->content = i;
-				i = size;	
+				i = size;
 			}
 			i++;
 		}
@@ -38,7 +38,7 @@ static void	ft_lstindex(int *arr, int size, t_list **head)
 static void	ft_sortarr(int **arr, int size)
 {
 	int	i;
-	int tmp;
+	int	tmp;
 
 	i = 0;
 	while (i < (size - 1))
@@ -48,7 +48,6 @@ static void	ft_sortarr(int **arr, int size)
 			tmp = (*arr)[i];
 			(*arr)[i] = (*arr)[i + 1];
 			(*arr)[i + 1] = tmp;
-
 			i = 0;
 		}
 		else
@@ -58,9 +57,9 @@ static void	ft_sortarr(int **arr, int size)
 
 void	ft_index(t_list **head)
 {
-	int	*arr;
-	int	size;
-	int	i;
+	int		*arr;
+	int		size;
+	int		i;
 	t_list	*tmp;
 
 	i = 0;
@@ -71,15 +70,12 @@ void	ft_index(t_list **head)
 		return ;
 	while (i < size)
 	{
-		arr[i] = (*head)->content; 
-		i++;
+		arr[i] = (*head)->content;
 		*head = (*head)->next;
+		i++;
 	}
 	ft_sortarr(&arr, size);
 	*head = tmp;
 	ft_lstindex(arr, size, head);
-
 	free(arr);
 }
-
-
